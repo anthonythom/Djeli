@@ -162,7 +162,7 @@ export const sidebarLinks = [
   {
     imgURL: "/assets/icons/gallery-add.svg",
     route: "/create-post",
-    label: "Create Post",
+    label: "Criar POst",
   },
 ];
 
@@ -465,7 +465,7 @@ export const bottombarLinks = [
 
   /* Button */
   .shad-button_primary {
-    @apply bg-primary-500 hover:bg-primary-500 text-light-1 flex gap-2 !important;
+    @apply bg-primary-500 hover:bg-amber-600 text-light-1 flex gap-2 !important;
   }
 
   .shad-button_dark_4 {
