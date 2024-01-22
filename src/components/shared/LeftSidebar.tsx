@@ -49,7 +49,7 @@ const LeftSidebar = () => {
             />
             <div className="flex flex-col">
               <p className="body-bold">{user.name}</p>
-              <p className="small-regular text-light-1">@{user.username}</p>
+              <p className="small-regular text-light-3">@{user.username}</p>
             </div>
           </Link>
         )}
@@ -62,7 +62,7 @@ const LeftSidebar = () => {
               <li
                 key={link.label}
                 className={`leftsidebar-link group ${
-                  isActive && "bg-amber-600"
+                  isActive && "bg-primary-500"
                 }`}>
                 <NavLink
                   to={link.route}
@@ -70,7 +70,6 @@ const LeftSidebar = () => {
                   <img
                     src={link.imgURL}
                     alt={link.label}
-                    color="rgb(23 37 84)"
                     className={`group-hover:invert-white ${
                       isActive && "invert-white"
                     }`}
@@ -88,7 +87,7 @@ const LeftSidebar = () => {
         className="shad-button_ghost"
         onClick={(e) => handleSignOut(e)}>
         <img src="/assets/icons/logout.svg" alt="logout" />
-        <p className="small-medium lg:base-medium">Sair</p>
+        <p className="small-medium lg:base-medium">Logout</p>
       </Button>
     </nav>
   );

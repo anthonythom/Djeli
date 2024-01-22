@@ -162,7 +162,7 @@ export const sidebarLinks = [
   {
     imgURL: "/assets/icons/gallery-add.svg",
     route: "/create-post",
-    label: "Criar POst",
+    label: "Create Post",
   },
 ];
 
@@ -421,7 +421,7 @@ export const bottombarLinks = [
   }
 
   .leftsidebar-link {
-    @apply rounded-lg base-medium hover:bg-sky-950 transition;
+    @apply rounded-lg base-medium hover:bg-primary-500 transition;
   }
 
   /* Post Card */
@@ -465,7 +465,7 @@ export const bottombarLinks = [
 
   /* Button */
   .shad-button_primary {
-    @apply bg-sky-950	 hover:bg-amber-600 text-light-1 flex gap-2 !important;
+    @apply bg-primary-500 hover:bg-primary-500 text-light-1 flex gap-2 !important;
   }
 
   .shad-button_dark_4 {

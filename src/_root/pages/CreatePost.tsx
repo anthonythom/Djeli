@@ -14,7 +14,7 @@ const CreatePost = () => {
           <h2 className="h3-bold md:h2-bold text-left w-full">Criar uma postagem</h2>
         </div>
 
-        <PostForm action="Criar" />
+        <PostForm action="Create" />
       </div>
     </div>
   );
