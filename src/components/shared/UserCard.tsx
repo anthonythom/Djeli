@@ -25,8 +25,15 @@ const UserCard = ({ user }: UserCardProps) => {
         </p>
       </div>
 
+<<<<<<< HEAD
       <Button type="button" size="sm" className=" bg-sky-950 ">
 Seguir
+=======
+
+      <Button type="button" size="sm" className=" bg-sky-950 ">
+Seguir
+
+>>>>>>> 8301d42bc04e9f56086a3055dd7a3d2a2d6f2391
       </Button>
     </Link>
   );
