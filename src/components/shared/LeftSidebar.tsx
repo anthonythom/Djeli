@@ -62,7 +62,7 @@ const LeftSidebar = () => {
               <li
                 key={link.label}
                 className={`leftsidebar-link group ${
-                  isActive && "bg-amber-600"
+                  isActive && "bg-primary-500"
                 }`}>
                 <NavLink
                   to={link.route}
@@ -87,7 +87,7 @@ const LeftSidebar = () => {
         className="shad-button_ghost"
         onClick={(e) => handleSignOut(e)}>
         <img src="/assets/icons/logout.svg" alt="logout" />
-        <p className="small-medium lg:base-medium">Sair</p>
+        <p className="small-medium lg:base-medium">Logout</p>
       </Button>
     </nav>
   );
