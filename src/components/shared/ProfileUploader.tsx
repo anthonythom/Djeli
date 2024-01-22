@@ -38,7 +38,7 @@ const ProfileUploader = ({ fieldChange, mediaUrl }: ProfileUploaderProps) => {
           alt="image"
           className="h-24 w-24 rounded-full object-cover object-top"
         />
-        <p className="text-blue-950 small-regular md:bbase-semibold">
+        <p className="text-white small-regular md:bbase-semibold">
         Alterar foto do perfil
         </p>
       </div>
