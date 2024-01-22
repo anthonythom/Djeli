@@ -80,13 +80,7 @@ const SignupForm = () => {
         <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
           Criar uma nova conta
         </h2>
-<<<<<<< HEAD
         <p className="text-amber-600 small-medium md:base-regular mt-2">
-=======
-
-        <p className="text-amber-600 small-medium md:base-regular mt-2">
-
->>>>>>> 8301d42bc04e9f56086a3055dd7a3d2a2d6f2391
         Para usar a plataforma da Djeli, insira seus dados
         </p>
 
@@ -163,13 +157,7 @@ const SignupForm = () => {
             Já tem uma conta?
             <Link
               to="/sign-in"
-<<<<<<< HEAD
-              className="   text-blue-950 text-small-semibold ml-1">
-=======
-
               className="   text-amber-600 text-small-semibold ml-1">
-
->>>>>>> 8301d42bc04e9f56086a3055dd7a3d2a2d6f2391
               Entrar
             </Link>
           </p>

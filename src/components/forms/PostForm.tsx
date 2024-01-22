@@ -23,7 +23,7 @@ import { useCreatePost, useUpdatePost } from "@/lib/react-query/queries";
 
 type PostFormProps = {
   post?: Models.Document;
-  action: "Create" | "Update";
+  action: "Criar" | "Update";
 };
 
 const PostForm = ({ post, action }: PostFormProps) => {
@@ -158,7 +158,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
             type="button"
             className="shad-button_dark_4"
             onClick={() => navigate(-1)}>
-            Cancel
+            Cancelar
           </Button>
           <Button
             type="submit"

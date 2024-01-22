@@ -20,10 +20,6 @@ interface StabBlockProps {
 
 const StatBlock = ({ value, label }: StabBlockProps) => (
   <div className="flex-center gap-2">
-<<<<<<< HEAD
-=======
-
->>>>>>> 8301d42bc04e9f56086a3055dd7a3d2a2d6f2391
     <p className="small-semibold lg:body-bold text-light-1">{value}</p>
     <p className="small-medium lg:base-medium text-light-2">{label}</p>
   </div>
@@ -59,15 +55,15 @@ const Profile = () => {
               <h1 className="text-center xl:text-left h3-bold md:h1-semibold w-full">
                 {currentUser.name}
               </h1>
-              <p className="small-regular md:body-medium text-light-3 text-center xl:text-left">
+              <p className="small-regular md:body-medium text-light-1 text-center xl:text-left">
                 @{currentUser.username}
               </p>
             </div>
 
             <div className="flex gap-8 mt-10 items-center justify-center xl:justify-start flex-wrap z-20">
-              <StatBlock value={currentUser.posts.length} label="Posts" />
-              <StatBlock value={20} label="Followers" />
-              <StatBlock value={20} label="Following" />
+              <StatBlock value={currentUser.posts.length} label="Publicações" />
+              <StatBlock value={0} label="Seguidores" />
+              <StatBlock value={0} label="Seguindo" />
             </div>
 
             <p className="small-medium md:base-medium text-center xl:text-left mt-7 max-w-screen-sm">
@@ -79,7 +75,7 @@ const Profile = () => {
             <div className={`${user.id !== currentUser.$id && "hidden"}`}>
               <Link
                 to={`/update-profile/${currentUser.$id}`}
-                className={`h-12 bg-dark-4 px-5 text-light-1 flex-center gap-2 rounded-lg ${
+                className={`h-12 bg-amber-900 px-5 text-light-1 flex-center gap-2 rounded-lg ${
                   user.id !== currentUser.$id && "hidden"
                 }`}>
                 <img
@@ -89,13 +85,13 @@ const Profile = () => {
                   height={20}
                 />
                 <p className="flex whitespace-nowrap small-medium">
-                  Edit Profile
+                  Editar Perfil
                 </p>
               </Link>
             </div>
             <div className={`${user.id === id && "hidden"}`}>
               <Button type="button" className="shad-button_primary px-8">
-                Follow
+                Seguir
               </Button>
             </div>
           </div>
@@ -115,18 +111,13 @@ const Profile = () => {
               width={20}
               height={20}
             />
-            Posts
+            Publicações
+
           </Link>
           <Link
             to={`/profile/${id}/liked-posts`}
             className={`profile-tab rounded-r-lg ${
-<<<<<<< HEAD
-              pathname === `/profile/${id}/liked-posts` && "!bg-amber-800"
-=======
-
               pathname === `/profile/${id}/liked-posts` && "!bg-amber-500"
-
->>>>>>> 8301d42bc04e9f56086a3055dd7a3d2a2d6f2391
             }`}>
             <img
               src={"/assets/icons/like.svg"}
@@ -134,7 +125,8 @@ const Profile = () => {
               width={20}
               height={20}
             />
-            Liked Posts
+            Postagens curtidas          
+
           </Link>
         </div>
       )}
