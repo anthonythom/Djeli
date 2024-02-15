@@ -45,7 +45,7 @@ const PostDetails = () => {
             width={24}
             height={24}
           />
-          <p className="small-medium lg:base-medium">Back</p>
+          <p className="small-medium lg:base-medium">Voltar</p>
         </Button>
       </div>
 

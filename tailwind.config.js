@@ -26,7 +26,7 @@ module.exports = {
         'off-white': '#D0DFFF',
         'red': '#FF5A5A',
         'dark-1': '#000000',
-        'dark-2': '#09090A',
+        'blue-452': '#011526',
         'dark-3': '#101012',
         'dark-4': '#1F1F22',
         'light-1': '#FFFFFF',
@@ -60,7 +60,13 @@ module.exports = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      backgroundImage: {
+        'hero-pattern': "url('public/assets/images/1.png')",
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
 };
+
+
+

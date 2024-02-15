@@ -21,7 +21,7 @@ const Home = () => {
   if (isErrorPosts || isErrorCreators) {
     return (
       <div className="flex flex-1">
-        <div className="home-container">
+        <div className="home-container"  >
           <p className="body-medium text-light-1">Algo ruim aconteceu</p>
         </div>
         <div className="home-creators">

@@ -53,7 +53,7 @@ const Explore = () => {
     <div className="explore-container">
       <div className="explore-inner_container">
         <h2 className="h3-bold md:h2-bold w-full">Pesquisar postagens</h2>
-        <div className="flex gap-1 px-4 w-full rounded-lg bg-amber-900">
+        <div className="flex gap-1 px-4 w-full rounded-lg  ">
           <img
             src="/assets/icons/search.svg"
             width={24}
