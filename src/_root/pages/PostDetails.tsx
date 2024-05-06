@@ -11,6 +11,11 @@ import {
 import { multiFormatDateString } from "@/lib/utils";
 import { useUserContext } from "@/context/AuthContext";
 
+interface Comment {
+  text: string;
+  user: string;
+}
+
 const PostDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -25,7 +30,7 @@ const PostDetails = () => {
     (userPost) => userPost.$id !== id
   );
 
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<Comment[]>([]);
 
   const addComment = (newComment: string, userName: string) => {
     setComments([...comments, { text: newComment, user: userName }]);
@@ -39,7 +44,7 @@ const PostDetails = () => {
   const CommentForm = () => {
     const [commentText, setCommentText] = useState("");
 
-    const handleSubmit = (e: { preventDefault: () => void }) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       addComment(commentText, user.name);
       setCommentText("");
@@ -144,30 +149,29 @@ const PostDetails = () => {
                   />
                 </Button>
               </div>
-            </div> <h3 className="body-bold md:h3-bold w-full my-10">
-    Comentários
-  </h3>
+            </div> 
+            <h3 className="body-bold md:h3-bold w-full my-10">
+              Comentários
+            </h3>
             <div className="flex-col min-h-max w-full text-amber-500 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-800 dark:bg-slate-950 dark:ring-offset-slate-950 dark:placeholder:text-slate-400 dark:focus-visible:ring-slate-300 shad-textarea custom-scrollbar" style={{ overflowY: 'auto' }}>
-  <hr className="border w-full border-dark-4/80" />
+              <hr className="border w-full border-dark-4/80" />
 
- 
+              <div style={{ flexGrow: 1 }}>
+                {comments.length === 0 ? (
+                  <p>Nenhum comentário ainda.</p>
+                ) : (
+                  <ul>
+                    {comments.map((comment, index) => (
+                      <li key={index}>
+                        <strong>{comment.user}: </strong> {comment.text}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
 
-  <div style={{ flexGrow: 1 }}>
-    {comments.length === 0 ? (
-      <p>Nenhum comentário ainda.</p>
-    ) : (
-      <ul>
-        {comments.map((comment, index) => (
-          <li key={index}>
-            <strong>{comment.user}: </strong> {comment.text}
-          </li>
-        ))}
-      </ul>
-    )}
-  </div>
-
-  <CommentForm />
-</div>
+              <CommentForm />
+            </div>
 
             <hr className="border w-full border-dark-4/80" />
 
