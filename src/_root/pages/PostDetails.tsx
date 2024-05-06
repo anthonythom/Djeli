@@ -1,9 +1,8 @@
+import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-
 import { Button } from "@/components/ui";
 import { Loader } from "@/components/shared";
 import { GridPostList, PostStats } from "@/components/shared";
-
 import {
   useGetPostById,
   useGetUserPosts,
@@ -16,7 +15,6 @@ const PostDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { user } = useUserContext();
-
   const { data: post, isLoading } = useGetPostById(id);
   const { data: userPosts, isLoading: isUserPostLoading } = useGetUserPosts(
     post?.creator.$id
@@ -27,9 +25,37 @@ const PostDetails = () => {
     (userPost) => userPost.$id !== id
   );
 
+  const [comments, setComments] = useState([]);
+
+  const addComment = (newComment: string, userName: string) => {
+    setComments([...comments, { text: newComment, user: userName }]);
+  };
+
   const handleDeletePost = () => {
     deletePost({ postId: id, imageId: post?.imageId });
     navigate(-1);
+  };
+
+  const CommentForm = () => {
+    const [commentText, setCommentText] = useState("");
+
+    const handleSubmit = (e: { preventDefault: () => void }) => {
+      e.preventDefault();
+      addComment(commentText, user.name);
+      setCommentText("");
+    };
+
+    return (
+      <form onSubmit={handleSubmit}>
+        <textarea
+          value={commentText}
+          onChange={(e) => setCommentText(e.target.value)}
+          placeholder="Digite seu comentário..."
+        /> 
+        <br />
+        <button className="shad-button_primary" type="submit">Comentar</button>
+      </form>
+    );
   };
 
   return (
@@ -85,8 +111,10 @@ const PostDetails = () => {
                       {post?.location}
                     </p>
                   </div>
+                 
                 </div>
               </Link>
+              
 
               <div className="flex-center gap-4">
                 <Link
@@ -99,6 +127,8 @@ const PostDetails = () => {
                     height={24}
                   />
                 </Link>
+
+                
 
                 <Button
                   onClick={handleDeletePost}
@@ -114,20 +144,59 @@ const PostDetails = () => {
                   />
                 </Button>
               </div>
-            </div>
+            </div> <h3 className="body-bold md:h3-bold w-full my-10">
+    Comentários
+  </h3>
+            <div className="flex-col min-h-max w-full text-amber-500 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-800 dark:bg-slate-950 dark:ring-offset-slate-950 dark:placeholder:text-slate-400 dark:focus-visible:ring-slate-300 shad-textarea custom-scrollbar" style={{ overflowY: 'auto' }}>
+  <hr className="border w-full border-dark-4/80" />
+
+ 
+
+  <div style={{ flexGrow: 1 }}>
+    {comments.length === 0 ? (
+      <p>Nenhum comentário ainda.</p>
+    ) : (
+      <ul>
+        {comments.map((comment, index) => (
+          <li key={index}>
+            <strong>{comment.user}: </strong> {comment.text}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+
+  <CommentForm />
+</div>
 
             <hr className="border w-full border-dark-4/80" />
 
             <div className="flex flex-col flex-1 w-full small-medium lg:base-regular">
               <p>{post?.caption}</p>
               <ul className="flex gap-1 mt-2">
-                {post?.tags.map((tag: string, index: string) => (
-                  <li
-                    key={`${tag}${index}`}
-                    className="text-light-1 small-regular">
-                    #{tag}
-                  </li>
-                ))}
+                {post?.tags.map(
+                  (
+                    tag:
+                      | string
+                      | number
+                      | boolean
+                      | React.ReactElement<
+                          any,
+                          string | React.JSXElementConstructor<any>
+                        >
+                      | Iterable<React.ReactNode>
+                      | React.ReactPortal
+                      | null
+                      | undefined,
+                    index: any
+                  ) => (
+                    <li
+                      key={`${tag}${index}`}
+                      className="text-light-1 small-regular">
+                      #{tag}
+                    </li>
+                  )
+                )}
               </ul>
             </div>
 
@@ -142,7 +211,7 @@ const PostDetails = () => {
         <hr className="border w-full border-dark-4/80" />
 
         <h3 className="body-bold md:h3-bold w-full my-10">
-          More Related Posts
+          Publicações relacionadas
         </h3>
         {isUserPostLoading || !relatedPosts ? (
           <Loader />
